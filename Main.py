@@ -7,29 +7,31 @@ def showLeaderboard():
     names, scores = getLeaderboardData()
     sortedLeaderboard = sortLeaderboard(names, scores)
     clear()
-    print("\033[1;31;40m")
+    color("red")
     displayGraphicFromFile("leaderboard")
-    print("\033[1;32;40m")
+    color("green")
     for i in (range(0,len(sortedLeaderboard)), range(0,10))[len(sortedLeaderboard) >= 10]:
         score, name = sortedLeaderboard[i]
         nameAndScore = name + " - " + score
         print(str(i + 1) + ") " + nameAndScore)
-    print("\033[1;33;40m")
+    color("yellow")
     input("Press enter to return to the menu...")
 
 #Game logic
 def playGame(gameChoices, gameAnswers):
     clear()
-    print("\033[1;31;40m")
+    color("red")
     displayGraphicFromFile("guessTheColor")
     correctAnswers = 0
     rounds = len(gameAnswers)
     for roundNumber in range(0, rounds):
         choices = gameChoices[roundNumber]
         answer = gameAnswers[roundNumber]
-        print("\033[1;32;40m\nYour colour choices are:\n")
+        color("green")
+        print("Your colour choices are:\n")
         print(choices)
-        userInputAnswer = input("\033[1;33;40mEnter the color you think it is: ")
+        color("yellow")
+        userInputAnswer = input("Enter the color you think it is: ")
         if (userInputAnswer == answer):
             correctAnswers += 1
     print("Out of " + str(rounds) + " rounds, you got " + str(correctAnswers) + " colors correct!")
@@ -85,12 +87,12 @@ def difficultyHandler(difficulty):
 #Main menu
 def mainMenu():
     clear()
-    print("\033[1;31;40m")
+    color("red")
     displayGraphicFromFile("title")
-    print("\033[1;32;40m")
+    color("green")
     print("Option 1: Play Game")
     print("Option 2: View Leaderboard")
-    print("\033[1;33;40m")
+    color("yellow")
     option = input("Enter a menu option: ")
 
     #Play game option
